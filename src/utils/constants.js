@@ -18,6 +18,10 @@ const Constants = {
     ADMIN: "admin",
     EDITOR: "editor",
     VIEWER: "viewer"
+  },
+  PERMISSION:{
+    READ: ['viewer', 'admin', 'editor'],
+    WRITE: ['admin', 'editor']
   }
 };
 

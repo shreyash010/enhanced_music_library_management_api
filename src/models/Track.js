@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const ObjectId = mongoose.Types.ObjectId;
 
 const trackSchema = new Schema({
     name: { 
@@ -11,9 +12,13 @@ const trackSchema = new Schema({
       required: true 
     },
     artist_id: { 
-      type: String, 
+      type: ObjectId, 
       required: true 
-    }, 
+    },
+    album_id: {
+      type: ObjectId,
+      required: true
+    },
     hidden: { 
       type: Boolean, 
       default: false 

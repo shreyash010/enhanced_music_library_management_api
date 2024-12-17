@@ -6,10 +6,7 @@ const MAX_RETRIES = Constants.DB.MAX_RETRIES;
 
 const connectWithRetry = async (retries = 0) => {
   try {
-    await mongoose.connect(Constants.DB.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(Constants.DB.MONGODB_URI);
     console.log('MongoDB connected successfully');
     return true;
   } catch (error) {
