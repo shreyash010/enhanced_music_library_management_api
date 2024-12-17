@@ -1,13 +1,14 @@
-const app = require('./app');
-const Constants = require('./utils/constants');
-const { connectWithRetry } = require('./utils/database');
 require('dotenv').config();
+const { connectWithRetry } = require('./utils/database');
+const Constants = require('./utils/constants');
 
 const PORT = Constants.SERVER.PORT;
 
 const startServer = async () => {
   try {
     await connectWithRetry();
+
+    const app = require('./app');
 
     const server = app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);

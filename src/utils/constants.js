@@ -7,7 +7,18 @@ const Constants = {
   SERVER: {
     PORT: process.env.PORT,
     NODE_ENV: process.env.NODE_ENV
-  } 
+  },
+  ROUTES: {
+    PUBLIC_ROUTES: ['login', 'signup']
+  },
+  SECRETS: {
+    JWT_SECRET: process.env.JWT_SECRET
+  },
+  ROLES: {
+    ADMIN: "admin",
+    EDITOR: "editor",
+    VIEWER: "viewer"
+  }
 };
 
 module.exports = Constants;

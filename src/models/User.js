@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -12,14 +13,15 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 8,
   },
-  user_roles: {
-    type: [String],
+  user_role: {
+    type: String,
     required: true,
-    enum: ['Admin', 'Editor', 'Viewer'],
-    validate: {
-      validator: (roles) => roles.length > 0,
-      message: 'At least one role must be specified',
-    },
+    enum: ['admin', 'editor', 'viewer']
+  },
+  organization: {
+    type: ObjectId,
+    ref: 'Organization',
+    required: true,
   },
 }, { timestamps: true });
 

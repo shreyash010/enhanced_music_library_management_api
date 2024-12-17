@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const router = require('./routes/index');
-require('dotenv').config();
+const routes = require('./routes/index');
+const middleware = require('./middlewares/middleware');
 
 const app = express();
 
@@ -10,8 +10,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(middleware);
+
 // Routes (to be added later)
-app.use('/api/v1', router);
+app.use('/api/v1', routes);
 // app.use('/api/v1/auth', authRoutes);
 // app.use('/api/v1/users', userRoutes);
 
