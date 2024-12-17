@@ -2,15 +2,12 @@
   "name": "enhanced_music_library_management_api",
   "version": "1.0.0",
   "description": "Music Library Management System",
-  "main": "src/server.js",
+  "main": "api/server.js",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js",
+    "dev": "nodemon api/server.js",
+    "start": "node api/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "Shreyash Waghmare",
-  "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -18,9 +15,13 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
-    "mongoose": "^8.9.0"
+    "mongoose": "^8.9.0",
+    "module-alias": "^2.2.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
+  },
+  "_moduleAliases": {
+    "@": "./src"
   }
 }

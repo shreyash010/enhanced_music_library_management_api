@@ -1,6 +1,8 @@
 require('dotenv').config();
-const { connectWithRetry } = require('./utils/database');
-const Constants = require('./utils/constants');
+require('module-alias/register'); // This is crucial to activate the module-alias
+
+const { connectWithRetry } = require('@/utils/database');
+const Constants = require('@/utils/constants');
 
 const PORT = Constants.SERVER.PORT;
 
@@ -8,7 +10,7 @@ const startServer = async () => {
   try {
     await connectWithRetry();
 
-    const app = require('./app');
+    const app = require('@/app');  // Ensure that app.js is in the src folder
 
     const server = app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
