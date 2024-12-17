@@ -10,19 +10,26 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+app.get('/', (req, res) => {
+  res.status(200).json({
+    status: 200,
+    message: 'Music Library Management API is running',
+  })
+})
+
 app.use(middleware);
 
-// Routes (to be added later)
 app.use('/api/v1', routes);
 // app.use('/api/v1/auth', authRoutes);
 // app.use('/api/v1/users', userRoutes);
 
 // Global Error Handler
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({
-    status: 500,
-    message: 'Internal Server Error',
+  console.error(err);
+  res.status(err.status || 500).json({
+    status: err.status || 500,
+    message: err.message || 'Internal Server Error',
   });
 });
 
