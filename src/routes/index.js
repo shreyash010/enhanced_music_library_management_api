@@ -3,7 +3,7 @@ const { login, signup } = require('../controllers/authControllers');
 
 // const authRouter = require('./authRoute');
 const userRouter = require('./userRoute');
-// const artistRouter = require('./artistRoute');
+const artistRouter = require('./artistRoute');
 // const albumRouter = require('./albumRouter');
 // const trackRouter = require('./trackRouter');
 
@@ -14,7 +14,7 @@ router.post('/signup', signup);
 
 // User and Artist Routes
 router.use('/', userRouter);
-// router.use('/', artistRouter);
+router.use('/', artistRouter);
 
 // router.use('/auth', authRouter);
 // router.use('/user', userRouter);

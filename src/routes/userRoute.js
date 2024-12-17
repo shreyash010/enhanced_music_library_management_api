@@ -8,18 +8,16 @@ const {
 
 const userRouter = express.Router();
 
-// User Routes
-
 // Route to get users
-userRouter.get('/users', getUsers); // Handles 200, 400, 401
+userRouter.get('/users', getUsers); 
 
 // Route to add a new user
-userRouter.post('/users/add-user', addUser); // Handles 201, 400, 401, 403, 409
+userRouter.post('/users/add-user', addUser); 
 
 // Route to delete a user by ID
-userRouter.delete('/users/:id', deleteUser); // Handles 200, 400, 401, 403, 404
+userRouter.delete('/users/:id', deleteUser); 
 
 // Route to update the password
-userRouter.put('/users/update-password', updatePassword); // Handles 204, 400, 401, 403, 404
+userRouter.put('/users/update-password', updatePassword); 
 
 module.exports = userRouter;

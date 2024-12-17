@@ -1,29 +1,19 @@
-const express = require('express');
-const {
+const express = require('express'); const {
   getArtists,
   getArtistById,
   addArtist,
   updateArtist,
   deleteArtist
 } = require('../controllers/artistController');
+const roleMiddleware = require('../middlewares/roleMiddleware');
+const Constants = require('../utils/constants')
 
-const artistRouter = express.Router();
+const router = express.Router();
 
-// Artist Routes
+router.get('/artists', roleMiddleware([Constants.ROLES.ADMIN, Constants.ROLES.EDITOR, Constants.ROLES.VIEWER]), getArtists);
+router.get('/artists/:id', roleMiddleware([Constants.ROLES.ADMIN, Constants.ROLES.EDITOR, Constants.ROLES.VIEWER]), getArtistById);
+router.post('/artists/add-artist', roleMiddleware([Constants.ROLES.ADMIN, Constants.ROLES.EDITOR]), addArtist);
+router.put('/artists/:id', roleMiddleware([Constants.ROLES.ADMIN, Constants.ROLES.EDITOR]), updateArtist);
+router.delete('/artists/:id', roleMiddleware([Constants.ROLES.ADMIN, Constants.ROLES.EDITOR]), deleteArtist);
 
-// Route to get all artists
-artistRouter.get('/artists', getArtists); // Handles 200, 400, 401
-
-// Route to get a single artist by ID
-artistRouter.get('/artists/:id', getArtistById); // Handles 200, 401, 403, 404
-
-// Route to add a new artist
-artistRouter.post('/artists/add-artist', addArtist); // Handles 201, 400, 401
-
-// Route to update an artist by ID
-artistRouter.put('/artists/:id', updateArtist); // Handles 204, 400, 401, 403, 404
-
-// Route to delete an artist by ID
-artistRouter.delete('/artists/:id', deleteArtist); // Handles 200, 400, 401, 403, 404
-
-module.exports = artistRouter;
+module.exports = router;

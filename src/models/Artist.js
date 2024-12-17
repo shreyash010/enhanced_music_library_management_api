@@ -7,8 +7,9 @@ const artistSchema = new Schema({
       required: true
     },
     grammy: { 
-      type: Boolean, 
-      default: false 
+      type: Number, 
+      default: 0,
+      min: [0, 'Grammy count cannot be negative'],
     },
     hidden: { 
       type: Boolean, 
